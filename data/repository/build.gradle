@@ -30,6 +30,6 @@ dependencies {
     implementation Dep.AndroidX.LiveData.liveDataCoreKtx
     implementation Dep.AndroidX.LiveData.liveDataKtx
 
-    api Dep.Dagger.hilt
+    implementation Dep.Dagger.hilt
     kapt Dep.Dagger.compiler
 }

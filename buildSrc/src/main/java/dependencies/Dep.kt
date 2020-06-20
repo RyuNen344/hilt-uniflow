@@ -72,14 +72,13 @@ object Dep {
     object Ktor {
         private const val version = "1.3.2"
         const val clientCore = "io.ktor:ktor-client-core:$version"
-        const val clientAndroid = "io.ktor:ktor-client-okhttp:$version"
+        const val clientOkhttp = "io.ktor:ktor-client-okhttp:$version"
         const val json = "io.ktor:ktor-client-json-jvm:$version"
         const val serialization = "io.ktor:ktor-client-serialization-jvm:$version"
     }
 
     object OkHttp {
         private const val version = "4.7.0"
-        const val client = "com.squareup.okhttp3:okhttp:$version"
         const val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:$version"
     }
 

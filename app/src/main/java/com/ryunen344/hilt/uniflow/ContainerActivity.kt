@@ -5,9 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import com.ryunen344.hilt.uniflow.template.R
-import com.ryunen344.hilt.uniflow.template.databinding.ActivityContainerBinding
+import com.ryunen344.hilt.uniflow.databinding.ActivityContainerBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ContainerActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController

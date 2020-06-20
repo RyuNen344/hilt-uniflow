@@ -27,9 +27,9 @@ dependencies {
     implementation Dep.Groupie.groupie
     implementation Dep.Groupie.viewbinding
 
-    api Dep.Dagger.hilt
+    implementation Dep.Dagger.hilt
     kapt Dep.Dagger.compiler
-    api Dep.Dagger.Android.hilt
-    api Dep.Dagger.Android.viewModel
+    implementation Dep.Dagger.Android.hilt
+    implementation Dep.Dagger.Android.viewModel
     kapt Dep.Dagger.Android.compiler
 }
