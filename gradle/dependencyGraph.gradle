@@ -38,7 +38,7 @@ task projectDependencyGraph {
                 jsProjects.add(project)
             }
             if (project.plugins.hasPlugin('com.android.library') ||
-                    project.plugins.hasPlugin('com.android.application')) {
+                project.plugins.hasPlugin('com.android.application')) {
                 androidProjects.add(project)
             }
             if (project.plugins.hasPlugin('com.android.dynamic-feature')) {
@@ -51,20 +51,20 @@ task projectDependencyGraph {
             project.configurations.all { config ->
                 if (config.name.toLowerCase().contains("test")) return
                 config.dependencies
-                        .withType(ProjectDependency)
-                        .collect { it.dependencyProject }
-                        .each { dependency ->
-                            projects.add(project)
-                            projects.add(dependency)
-                            rootProjects.remove(dependency)
+                    .withType(ProjectDependency)
+                    .collect { it.dependencyProject }
+                    .each { dependency ->
+                        projects.add(project)
+                        projects.add(dependency)
+                        rootProjects.remove(dependency)
 
-                            def graphKey = new Tuple2<Project, Project>(project, dependency)
-                            def traits = dependencies.computeIfAbsent(graphKey) { new ArrayList<String>() }
+                        def graphKey = new Tuple2<Project, Project>(project, dependency)
+                        def traits = dependencies.computeIfAbsent(graphKey) { new ArrayList<String>() }
 
-                            if (config.name.toLowerCase().endsWith('implementation')) {
-                                traits.add('style=dotted')
-                            }
+                        if (config.name.toLowerCase().endsWith('implementation')) {
+                            traits.add('style=dotted')
                         }
+                    }
             }
         }
 
