@@ -6,6 +6,7 @@ plugins {
     id 'kotlin-kapt'
     id 'kotlinx-serialization'
     id 'androidx.navigation.safeargs.kotlin'
+    id 'dagger.hilt.android.plugin'
 }
 
 apply from: rootProject.file('gradle/android.gradle')
@@ -36,10 +37,10 @@ dependencies {
     api Dep.AndroidX.LiveData.liveDataKtx
     api Dep.AndroidX.LiveData.commonJava8
 
-    api Dep.Dagger.hilt
+    implementation Dep.Dagger.hilt
     kapt Dep.Dagger.compiler
-    api Dep.Dagger.Android.hilt
-    api Dep.Dagger.Android.viewModel
+    implementation Dep.Dagger.Android.hilt
+    implementation Dep.Dagger.Android.viewModel
     kapt Dep.Dagger.Android.compiler
 
     api Dep.Timber.android

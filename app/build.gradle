@@ -7,6 +7,7 @@ plugins {
     id 'kotlin-kapt'
     id 'kotlinx-serialization'
     id 'androidx.navigation.safeargs.kotlin'
+    id 'dagger.hilt.android.plugin'
 }
 
 apply from: rootProject.file('gradle/android.gradle')
@@ -41,4 +42,7 @@ dependencies {
     implementation project(":feature:home")
 
     implementation Dep.AndroidX.constraintLayout
+
+    api Dep.Dagger.hilt
+    kapt Dep.Dagger.compiler
 }
