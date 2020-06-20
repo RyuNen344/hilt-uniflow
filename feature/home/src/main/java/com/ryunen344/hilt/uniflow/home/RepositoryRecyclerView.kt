@@ -12,12 +12,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ryunen344.hilt.uniflow.model.Repository
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
+import com.xwray.groupie.Section
 
 class RepositoryRecyclerView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyle: Int = 0
 ) : RecyclerView(context, attrs, defStyle) {
+
+    private val section = Section()
 
     private var selectionTracker: SelectionTracker<Long>
 
@@ -27,6 +30,7 @@ class RepositoryRecyclerView @JvmOverloads constructor(
         addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
         groupAdapter.setHasStableIds(true)
         adapter = groupAdapter
+        groupAdapter.add(section)
 
         selectionTracker = SelectionTracker.Builder<Long>(
             "repository-selection-id",
@@ -46,11 +50,10 @@ class RepositoryRecyclerView @JvmOverloads constructor(
     private fun setContent() {
         val repositories = repositories ?: return
 
-        groupAdapter.clear()
-        groupAdapter.addAll(repositories.map { RepositoryItem(selectionTracker, it) })
+        section.update(repositories.map { RepositoryItem(selectionTracker, it) })
     }
 
-    inner class RepositoryIdKeyProvider(private val repositoryRecyclerView: RepositoryRecyclerView) :
+    private inner class RepositoryIdKeyProvider(private val repositoryRecyclerView: RepositoryRecyclerView) :
         ItemKeyProvider<Long>(SCOPE_MAPPED) {
 
         override fun getKey(position: Int): Long? = repositoryRecyclerView.groupAdapter.getItem(position).id
@@ -59,7 +62,7 @@ class RepositoryRecyclerView @JvmOverloads constructor(
             repositoryRecyclerView.findViewHolderForItemId(key)?.adapterPosition ?: 0
     }
 
-    inner class RepositoryLookup(private val repositoryRecyclerView: RepositoryRecyclerView) :
+    private inner class RepositoryLookup(private val repositoryRecyclerView: RepositoryRecyclerView) :
         ItemDetailsLookup<Long>() {
         override fun getItemDetails(e: MotionEvent): ItemDetails<Long>? =
             repositoryRecyclerView.findChildViewUnder(e.x, e.y)?.let {
