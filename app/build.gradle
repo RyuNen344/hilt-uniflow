@@ -7,11 +7,9 @@ plugins {
     id 'kotlin-kapt'
     id 'kotlinx-serialization'
     id 'androidx.navigation.safeargs.kotlin'
-    id 'com.releaseshub.gradle.plugin'
 }
 
 apply from: rootProject.file('gradle/android.gradle')
-android.dataBinding.enabled = true
 
 android {
     defaultConfig {
@@ -28,8 +26,8 @@ android {
         }
     }
 
-    dataBinding {
-        enabled = true
+    buildFeatures {
+        dataBinding = true
     }
 }
 
@@ -60,18 +58,4 @@ dependencies {
     implementation Dep.Koin.scope
     implementation Dep.Koin.viewmodel
     implementation Dep.Koin.fragment
-
-    testImplementation Dep.Test.junit
-    testImplementation Dep.Test.androidJunit4Ktx
-}
-
-releasesHub {
-    dependenciesBasePath = "buildSrc/src/main/java/dependencies/"
-    dependenciesClassNames = ["Dep.kt"]
-    pullRequestEnabled = true
-    gitHubRepositoryOwner = "RyuNen344"
-    gitHubRepositoryName = "android-template"
-    pullRequestsMax = 2
-    gitHubUserName = "RyuNen344"
-    gitHubUserEmail = "s1100633@outlook.com"
 }

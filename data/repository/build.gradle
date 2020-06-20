@@ -8,7 +8,6 @@ plugins {
 }
 
 apply from: rootProject.file('gradle/android.gradle')
-android.dataBinding.enabled = true
 
 dependencies {
 
@@ -33,12 +32,4 @@ dependencies {
 
     implementation Dep.Koin.android
     implementation Dep.Koin.scope
-
-    testImplementation Dep.Test.junit
-    androidTestImplementation Dep.Test.androidJunit4Ktx
-    androidTestImplementation Dep.Test.espressoCore
-    testImplementation Dep.Test.coroutinesTest
-    testImplementation Dep.Test.kotlinTestAssertions
-    androidTestImplementation Dep.Test.testingKtx
-
 }

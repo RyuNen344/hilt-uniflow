@@ -13,8 +13,6 @@ android {
     defaultConfig {
         buildConfigField "String", "API_ENDPOINT", "\"https://api.github.com\""
     }
-
-    dataBinding.enabled = true
 }
 
 dependencies {
@@ -44,12 +42,4 @@ dependencies {
     implementation Dep.Ktor.clientAndroid
     implementation Dep.Ktor.json
     implementation Dep.Ktor.serialization
-
-    testImplementation Dep.Test.junit
-    androidTestImplementation Dep.Test.androidJunit4Ktx
-    androidTestImplementation Dep.Test.espressoCore
-    testImplementation Dep.Test.coroutinesTest
-    testImplementation Dep.Test.kotlinTestAssertions
-    androidTestImplementation Dep.Test.testingKtx
-
 }
