@@ -40,22 +40,5 @@ dependencies {
     implementation project(":data:repository")
     implementation project(":feature:home")
 
-    implementation Dep.Kotlin.stdlibJvm
-    implementation Dep.Kotlin.stdlibCommon
-
-    implementation Dep.AndroidX.coreKtx
-    implementation Dep.AndroidX.appCompat
     implementation Dep.AndroidX.constraintLayout
-
-    implementation Dep.AndroidX.Navigation.uiKtx
-    implementation Dep.AndroidX.Navigation.fragmentKtx
-    implementation Dep.AndroidX.Navigation.runtimeKtx
-
-    implementation Dep.Kotlin.Coroutines.coroutines
-    implementation Dep.Kotlin.Coroutines.coroutinesAndroid
-
-    implementation Dep.Koin.android
-    implementation Dep.Koin.scope
-    implementation Dep.Koin.viewmodel
-    implementation Dep.Koin.fragment
 }

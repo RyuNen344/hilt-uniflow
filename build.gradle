@@ -15,6 +15,7 @@ buildscript {
     dependencies {
         classpath Dep.GradlePlugin.Android.android
         classpath Dep.GradlePlugin.Android.safeArgs
+        classpath Dep.GradlePlugin.daggerHilt
         classpath Dep.GradlePlugin.kotlin
         classpath Dep.GradlePlugin.kotlinSerialization
     }

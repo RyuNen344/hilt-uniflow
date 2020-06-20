@@ -25,12 +25,6 @@ dependencies {
 
     implementation Dep.Kotlin.Serialization.serializationAndroid
 
-    implementation Dep.AndroidX.coreKtx
-    implementation Dep.AndroidX.appCompat
-
-    implementation Dep.Koin.android
-    implementation Dep.Koin.scope
-
     api Dep.Klock.common
 
     implementation Dep.OkHttp.client

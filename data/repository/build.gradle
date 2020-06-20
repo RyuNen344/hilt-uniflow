@@ -29,6 +29,6 @@ dependencies {
     implementation Dep.AndroidX.LiveData.liveDataCoreKtx
     implementation Dep.AndroidX.LiveData.liveDataKtx
 
-    implementation Dep.Koin.android
-    implementation Dep.Koin.scope
+    api Dep.Dagger.hilt
+    kapt Dep.Dagger.compiler
 }
