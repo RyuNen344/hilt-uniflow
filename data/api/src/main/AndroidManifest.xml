@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.ryunen344.template.api">
+    package="com.ryunen344.hilt.uniflow.api">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
