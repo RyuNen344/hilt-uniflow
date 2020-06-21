@@ -1,19 +1,29 @@
 package com.ryunen344.hilt.uniflow.home
 
 import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asLiveData
-import androidx.lifecycle.viewModelScope
 import com.ryunen344.hilt.uniflow.repository.github.GitHubRepository
-import kotlinx.coroutines.Dispatchers
+import io.uniflow.android.flow.AndroidDataFlow
+import io.uniflow.core.flow.data.UIState
 import kotlinx.serialization.ImplicitReflectionSerializer
 
+@ImplicitReflectionSerializer
 class HomeViewModel @ViewModelInject constructor(
-    gitHubRepository: GitHubRepository
-) : ViewModel() {
+    private val gitHubRepository: GitHubRepository
+) : AndroidDataFlow(defaultState = UIState.Empty) {
+
+    init {
+        getRepositoryList()
+    }
 
     @ImplicitReflectionSerializer
-    val repositories =
-        gitHubRepository.getRepositoryList(null)
-            .asLiveData(Dispatchers.Default + viewModelScope.coroutineContext)
+    fun getRepositoryList() = action(
+        onAction = {
+            setState { UIState.Loading }
+            val list = gitHubRepository.getRepositoryListOneShot()
+            setState { RepositoryState(list) }
+        },
+        onError = { error, _ ->
+            setState { UIState.Failed(message = null, error = error) }
+        }
+    )
 }

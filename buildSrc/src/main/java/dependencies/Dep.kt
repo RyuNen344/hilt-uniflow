@@ -82,6 +82,10 @@ object Dep {
         const val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:$version"
     }
 
+    object Uniflow {
+        const val androidx = "io.uniflow:uniflow-android:0.11.1"
+    }
+
     object Groupie {
         const val groupie = "com.xwray:groupie:2.8.0"
         const val viewbinding = "com.xwray:groupie-viewbinding:2.8.0"

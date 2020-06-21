@@ -10,10 +10,13 @@ plugins {
 }
 
 apply from: rootProject.file('gradle/android.gradle')
+android.buildFeatures.dataBinding = true
 
 dependencies {
 
-    implementation project(":resource")
+    api project(":resource")
+    api project(":model")
+    api project(":data:repository")
 
     api Dep.Kotlin.stdlibJvm
     api Dep.Kotlin.stdlibCommon
@@ -36,6 +39,8 @@ dependencies {
     api Dep.AndroidX.LiveData.liveDataCoreKtx
     api Dep.AndroidX.LiveData.liveDataKtx
     api Dep.AndroidX.LiveData.commonJava8
+
+    api Dep.Uniflow.androidx
 
     implementation Dep.Dagger.hilt
     kapt Dep.Dagger.compiler

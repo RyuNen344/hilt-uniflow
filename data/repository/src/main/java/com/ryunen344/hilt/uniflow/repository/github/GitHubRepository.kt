@@ -5,21 +5,16 @@ import com.ryunen344.hilt.uniflow.api.github.response.OwnerResponse
 import com.ryunen344.hilt.uniflow.api.github.response.RepositoryItemResponse
 import com.ryunen344.hilt.uniflow.model.Owner
 import com.ryunen344.hilt.uniflow.model.Repository
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
 import kotlinx.serialization.ImplicitReflectionSerializer
 
 class GitHubRepository(private val gitHubApi: GitHubApi) {
 
     @ImplicitReflectionSerializer
-    fun getRepositoryList(since: Int?): Flow<List<Repository>> = flow {
-        emit(
-            gitHubApi
-                .getRepositories(since)
-                .repositories
-                .map(RepositoryItemResponse::toRepository)
-        )
-    }
+    suspend fun getRepositoryListOneShot(since: Int? = 10): List<Repository> =
+        gitHubApi
+            .getRepositories(since)
+            .repositories
+            .map(RepositoryItemResponse::toRepository)
 }
 
 private fun RepositoryItemResponse.toRepository(): Repository =
